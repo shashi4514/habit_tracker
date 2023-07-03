@@ -1,0 +1,88 @@
+
+
+
+<div class="container">
+    <div class="row mt-2 text-dark">
+        <h2 class="text-center">Habits here</h2>
+    </div>
+
+    <div class="row my-3">
+        <form action="/habits/create" method="post">
+            <input type="text" class="form-control p-3" name="habit" placeholder="Add habit...">
+            <div class="d-grid d-md-flex justify-content-center my-3">
+                <button class="btn btn-primary" style="width:40%; background-color: blueviolet; border: none" type="submit">ADD</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row border">
+        <div style="text-align: center; font-weight: 700; color: blueviolet;">
+            <a style="color: black; font-size: large; text-decoration: none;" href="/habits/dashboard">
+                Today
+            </a> | 
+            <a style="color: black; font-size: large; text-decoration: none;" href="/habits/dashboard-weekly">
+                Weekly
+            </a>
+        </div>
+        <% if(habits.length > 0){ %>
+            <ol class="list-group list-group-numberd">
+                <% for(let habit of habits){ %>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-start m-2">
+                        <div class="me-auto">
+                            <div class="fw-bold">
+                                <%= habit.content %>
+                            </div>
+                            <a href="/habits/delete/<%= habit.id %>">
+                                <button class="btn btn-danger btn-sm m-3">Remove habit</button>
+                            </a>
+                            <span class="badge bg-success rounded-pill">
+                                Streak : <%= habit.streak %>/7
+                            </span>
+                            <span class="badge bg-success rounded-pill">
+                                Completed : <%= habit.completed %>/7
+                            </span>
+                        </div>
+
+                        <% let color = "secondary" %>
+                        <% if(habit.days[0] == 'Done'){ %>
+                            <% color = "success" %>
+                        <% }else if(habit.days[0] == 'Not Done'){ %>
+                            <% color = "danger" %>
+                        <% } %>
+
+                        <div>
+                            <button class="btn btn-<%= color %> dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><%= habit.days[0] %></button>
+
+                            <ul style="z-index: 99!important" class="dropdown-menu index" aria-labelledby="dropdownMenuButton" style="z-index: 2;">
+                                <li>
+                                    <a class="dropdown-item" href="/habits/update/<%= habit.id %>/<%= 0 %>/Done">Done</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/habits/update/<%= habit.id %>/<%= 0 %>/Not%20Done">Not Done</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/habits/update/<%= habit.id %>/<%= 0 %>/None">None</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                <% } %>
+            </ol>
+        <% } %>
+
+    </div>
+
+</div>
+
+

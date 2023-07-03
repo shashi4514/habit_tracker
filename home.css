@@ -1,0 +1,17 @@
+
+#image img{
+    width : 25%;
+    height : 25%;
+}
+
+.card-title{
+    color : blueviolet;
+}
+
+
+
+.b2 .btn{
+    background-color: blueviolet;
+    width : 60%;
+    border: none;
+}

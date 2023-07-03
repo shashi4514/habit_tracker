@@ -1,0 +1,19 @@
+
+<link rel="stylesheet" href="/css/header.css">
+
+<header>
+    <nav class="navbar navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Habit Tracket</a>
+            <div class="d-flex">
+                <% if(locals.user){ %>
+                    <a class="navbar-brand" href="#"><%= user.name %></a>
+                    <a class="navbar-brand" href="/users/logout">Log Out</a>
+                <% }else{ %>
+                    <a class="navbar-brand" href="/users/login">LogIn</a>
+                    <a class="navbar-brand" href="/users/register">Sign Up</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,8 @@
+
+.navbar{
+    background-color: blueviolet;
+}
+
+.container-fluid .navbar-brand{
+    color: white;
+}

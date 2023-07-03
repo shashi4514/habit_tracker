@@ -1,0 +1,11 @@
+
+.color{
+    background-color: blueviolet;
+    color: white;
+    border: none;
+}
+
+.lead .r-link{
+    text-decoration: none;
+    color: blueviolet;
+}
